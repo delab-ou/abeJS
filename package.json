@@ -1,0 +1,16 @@
+{
+  "name": "abejs",
+  "version": "0.0.1",
+  "description": "abe-js glue code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hdhrkjm",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^3.0.0",
+    "bindings": "^1.2.1",
+    "node-gyp": "^5.1.1"
+  }
+}
