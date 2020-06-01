@@ -14,7 +14,7 @@ public:
   Napi::Value keygen(const Napi::CallbackInfo &info);
 
 protected:
-  static oabe::OpenABECryptoContext *cpabe;
+  oabe::OpenABECryptoContext *cpabe;
 
 private:
   static Napi::FunctionReference constructor;

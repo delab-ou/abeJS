@@ -17,7 +17,11 @@
             '-lcrypto', '-lrelic', '-lrelic_ec',
             '-L/Users/hal/lib'],
             'defines': ['NAPI_DISABLE_CPP_EXCEPTIONS'],
-            #'libraries': ['/Users/hal/lib/libopenabe.a', '/Users/hal/lib/librelic.a'],
+            'libraries': ['/Users/hal/lib/libopenabe.a',
+                '/Users/hal/lib/librelic_s.a',
+                '/Users/hal/lib/librelic_s_ec.a',
+                '/usr/local/lib/libgmp.a',
+                '/usr/local/lib/libgmpxx.a'],
             'conditions': [
                 [
                     'OS=="mac"',
