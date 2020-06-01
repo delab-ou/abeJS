@@ -1,0 +1,1 @@
+g++ -std=c++14 napi-abe.cc -I/Users/hal/.nvm/versions/node/v12.17.0/include/node -I/Users/hal/workspace/abeJS/node_modules/node-addon-api -I/Users/hal/workspace/git_workspace/openabe/root/include -I/Users/hal/workspace/git_workspace/openabe/deps/root/include -c
