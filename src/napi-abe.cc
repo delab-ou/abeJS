@@ -22,11 +22,25 @@ Napi::Object JsOABE::Init(Napi::Env env, Napi::Object exports){
 JsOABE::JsOABE(const Napi::CallbackInfo& info): Napi::ObjectWrap<JsOABE>(info){
 
   auto env = info.Env();
-
+  std::string abetype;
   oabe::InitializeOpenABE();
-  this->cpabe=new oabe::OpenABECryptoContext("CP-ABE");
+
+  if (info.Length() == 1) {
+      std::string tmp = info[0].As<Napi::String>().ToString();
+      if((tmp != "CP-ABE") && (tmp!="KP-ABE")){
+        abetype=="KP-ABE";
+      }
+      else{
+        abetype=tmp;
+      }
+  }
+  else{
+    abetype="KP-ABE";
+  }
+  this->cpabe=new oabe::OpenABECryptoContext(abetype);
   this->cpabe->generateParams();
 }
+
 JsOABE::~JsOABE(){
   oabe::ShutdownOpenABE();
   delete this->cpabe;
@@ -74,8 +88,9 @@ Napi::Value JsOABE::decrypt(const Napi::CallbackInfo &info){
     std::string attrs = info[0].As<Napi::String>().ToString();
     std::string cipher = info[1].As<Napi::String>().ToString();
     std::string plain="";
+
     bool result = this->cpabe->decrypt(attrs, cipher, plain);
-    return Napi::String::New(env, plain);
+    return (result)?Napi::String::New(env, plain):Napi::String::New(env, "");
 
 }
 
