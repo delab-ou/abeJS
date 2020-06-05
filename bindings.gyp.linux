@@ -1,0 +1,23 @@
+{
+    'targets': [
+        {
+            'target_name': 'napi_abe',
+            'sources': ['src/napi-abe.cc'],
+            'include_dirs': [
+                '<!@(node -p \'require("node-addon-api").include\')',
+                '<(module_root_dir)/src/',
+            ],
+            'cflags': ['-fexceptions','-frtti','-no-pie'],
+            'cflags_cc': ['-fexceptions', '-frtti', '-std=c++14', '-lopenabe',
+            '-lcrypto', '-lrelic', '-lrelic_ec',
+            '-L/usr/local/lib', '-no-pie'],
+            'defines': ['NAPI_DISABLE_CPP_EXCEPTIONS'],
+            'libraries': [
+                '/usr/local/lib/libopenabe.a',
+                '/usr/local/lib/librelic_s.a',
+                '/usr/local/lib/librelic_s_ec.a',
+                '/usr/local/lib/libgmp.a',
+                '/usr/local/lib/libgmpxx.a'],
+        }
+    ]
+}
