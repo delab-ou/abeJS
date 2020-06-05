@@ -1,0 +1,54 @@
+docker pull ubuntu:18.04
+docker run ubuntu:18.04
+apt update
+apt install build-essential
+apt install git wget cmake m4 autoconf libreadline-dev libtool vim unzip flex curl
+cd
+wget https://gmplib.org/download/gmp/gmp-6.2.0.tar.xz
+wget ftp://ftp.gnu.org/gnu/bison/bison-3.6.3.tar.gz
+git clone https://github.com/zeutro/openabe
+tar zxf bison-3.6.3.tar.gz
+tar Jxf gmp-6.2.0.tar.xz
+cd bison-3.6.3
+./configure
+make
+make install
+cd
+cd gmp-6.2.0
+// configureで --enabel-cxx
+
+./configure --enable-cxx
+
+// -fPICを有効にする必要がある
+// MakefileのCFLAGSとCXXFLAGSに-fPICを追加
+
+make
+make check
+make install
+
+cd
+cd openabe
+//openabe/deps/relic/Makefileの２箇所の$(CMAKE_VARS)に-fPICを加える，
+mkdir bin
+cd bin
+ln -s $(which bison) bison
+//openabe/deps/gtest/download_gtest.shの
+//wget -O ${GTEST_VERSION} ${GTEST_LINK}
+//を
+//wget -O ${GTEST_VERSION} ${GTEST_LINK} --no-check-certificate
+//にするか
+//wget https://github.com/google/googletest/archive/release-1.8.0.zip --no-check-certificate
+//をdeps/gtestで実行する
+
+cd ..
+. ./env
+make
+make test
+make install
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+nvm install --lts
+npm install -g node-gyp
+npm install -g node-addon-api
+
+docker commit
