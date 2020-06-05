@@ -13,11 +13,11 @@
             '-L/usr/local/lib', '-no-pie'],
             'defines': ['NAPI_DISABLE_CPP_EXCEPTIONS'],
             'libraries': [
-                '/usr/local/lib/libopenabe.a',
-                '/usr/local/lib/librelic_s.a',
-                '/usr/local/lib/librelic_s_ec.a',
-                '/usr/local/lib/libgmp.a',
-                '/usr/local/lib/libgmpxx.a'],
+                '/usr/local/lib/libopenabe.so',
+                '/usr/local/lib/librelic.so',
+                '/usr/local/lib/librelic_ec.so',
+                '/usr/local/lib/libgmp.so',
+                '/usr/local/lib/libgmpxx.so'],
         }
     ]
 }
