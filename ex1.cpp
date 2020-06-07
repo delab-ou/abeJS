@@ -59,10 +59,24 @@ int main(int argc, char **argv) {
 
   cpabe.generateParams();
 
+  std::string mpk;
+  cpabe.exportPublicParams(mpk);
+  std::string msk;
+  cpabe.exportSecretParams(msk);
+
+  std::cout << "mpk=" << mpk << std::endl;
+  std::cout << "msk=" << msk << std::endl;
+
+  cpabe.importPublicParams(mpk);
+  cpabe.importSecretParams(msk);
+  std::cout << "import" << std::endl;
+
   cout << "Please input your attribute" << endl;
   cin.getline(str2, BUFFER, '\n');
 
   cpabe.keygen("|attr1|attr2|", "key0");
+  cpabe.keygen("|attr1|attr2|", "key1");
+  cpabe.keygen("|attr3|attr4|", "key2");
 
   cpabe.encrypt("attr1 and attr2", ptext, ctext);
   cout << "ciphered text: " << ctext << endl;

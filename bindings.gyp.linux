@@ -1,7 +1,7 @@
 {
     'targets': [
         {
-            'target_name': 'napi_abe',
+            'target_name': 'napi-abe',
             'sources': ['src/napi-abe.cc'],
             'include_dirs': [
                 '<!@(node -p \'require("node-addon-api").include\')',

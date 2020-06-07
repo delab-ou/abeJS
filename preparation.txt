@@ -56,6 +56,7 @@ npm install -g bindings
 //を追加
 
 //python3のインストール準備
+//pyenvをインストール後に
 sudo apt install -y build-essential # c++コンパイラ
 sudo apt install -y libffi-dev
 sudo apt install -y libssl-dev # openssl
@@ -68,3 +69,10 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 source ~/.bashrc
+
+//fabric-nodeenvの起動時にはbashではなくshが起動するためPATHやライブラリパスの設定が必要
+//build.shに書くか.profileに書く
+//start.shにも書く必要がある
+//export PATH= ...
+//export LD_LIBRARY_PATH= ...
+//export NODE_PATH = $(npm root -g)

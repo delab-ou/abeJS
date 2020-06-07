@@ -12,9 +12,13 @@ public:
   Napi::Value encrypt(const Napi::CallbackInfo &info);
   Napi::Value decrypt(const Napi::CallbackInfo &info);
   Napi::Value keygen(const Napi::CallbackInfo &info);
+  Napi::Value importMPK(const Napi::CallbackInfo &info);
+  Napi::Value importMSK(const Napi::CallbackInfo &info);
+  Napi::Value exportMPK(const Napi::CallbackInfo &info);
+  Napi::Value exportMSK(const Napi::CallbackInfo &info);
 
 protected:
-  oabe::OpenABECryptoContext *cpabe;
+  static oabe::OpenABECryptoContext *abe;
 
 private:
   static Napi::FunctionReference constructor;
