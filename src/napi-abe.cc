@@ -111,9 +111,9 @@ Napi::Value JsOABE::keygen(const Napi::CallbackInfo &info){
     std::string attrs = info[0].As<Napi::String>().ToString();
     std::string key = info[1].As<Napi::String>().ToString();
 
-    std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
+    //std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
     this->abe->keygen(attrs,key);
-    std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
+    //std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
     return env.Null();
 
 }
@@ -131,7 +131,7 @@ Napi::Value JsOABE::encrypt(const Napi::CallbackInfo &info){
 
   this->abe->encrypt(attrs, plain, cipher);
 
-  std::cout<<"cipher text="<< cipher <<std::endl;
+  //std::cout<<"cipher text="<< cipher <<std::endl;
 
   return Napi::String::New(env, cipher);
 }
