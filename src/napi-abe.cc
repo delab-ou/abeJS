@@ -33,7 +33,7 @@ JsOABE::JsOABE(const Napi::CallbackInfo& info): Napi::ObjectWrap<JsOABE>(info){
   if (info.Length() >= 1) {
       std::string tmp = info[0].As<Napi::String>().ToString();
       if((tmp != "CP-ABE") && (tmp!="KP-ABE")){
-        abetype=="KP-ABE";
+        abetype="KP-ABE";
       }
       else{
         abetype=tmp;
@@ -86,6 +86,7 @@ Napi::Value JsOABE::importMPK(const Napi::CallbackInfo &info){
   std::string mpk = info[0].As<Napi::String>().ToString();
   std::cout << "import mpk = " << mpk <<std::endl;
   this->abe->importPublicParams(mpk);
+  return env.Null();
 }
 
 Napi::Value JsOABE::importMSK(const Napi::CallbackInfo &info){
@@ -97,6 +98,7 @@ Napi::Value JsOABE::importMSK(const Napi::CallbackInfo &info){
   std::string msk = info[0].As<Napi::String>().ToString();
   std::cout << "import msk = " << msk <<std::endl;
   this->abe->importSecretParams(msk);
+  return env.Null();
 
 }
 
@@ -112,6 +114,7 @@ Napi::Value JsOABE::keygen(const Napi::CallbackInfo &info){
     std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
     this->abe->keygen(attrs,key);
     std::cout<<"attr:"<<attrs<<" key:"<<key<<std::endl;
+    return env.Null();
 
 }
 

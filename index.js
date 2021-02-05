@@ -13,8 +13,8 @@ var ctext;
 var ptext="text1";
 var ptext2="text2";
 
-console.log("msk = \n\""+msk+"\"");
-console.log("mpk = \n\""+mpk+"\"");
+console.log("msk = \n\""+keys[abetype]["msk"]+"\"");
+console.log("mpk = \n\""+keys[abetype]["mpk"]+"\"");
 abe.keygen("(attr1 or attr2)", "key0");
 abe.keygen("(attr3 and attr4)","key1");
 abe.keygen("(attr3 or attr5)","key2");
@@ -23,7 +23,7 @@ var cctext=abe.encrypt("attr1",ptext);
 var c3o4text=abe.encrypt("attr4",ptext2);
 
 console.log("cctext\n"+cctext);
-console.log(c3o4text);
+console.log("c3o4text\n"+c3o4text);
 
 var dtext=abe.decrypt(
   "key0",
