@@ -29,7 +29,7 @@ function runABE(abe,encattr,keyattr,data){
   abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
   keygentime=performance.now()-keygentime;
 
-  let cctex='';
+  let cctext='';
   let enctime=performance.now();
   for(let k=0;k<100;k++){
     cctext=abe.encrypt(encattr,data);
@@ -43,7 +43,9 @@ function runABE(abe,encattr,keyattr,data){
   dectime=performance.now()-dectime;
     console.log('keygen:'+keygentime+','+
         'encryption:'+enctime+','+
-        'decryption:'+dectime);
+        'decryption:'+dectime+","+
+        'plain:'+data.length+","+
+        'cipher:'+cctext.length);
 }
 
 function runCPABE(){

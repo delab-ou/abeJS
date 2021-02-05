@@ -1,0 +1,20 @@
+test
+finish Init: 
+type:CP-ABE
+cp data length=1000 attributes=10 type=and
+keygen:0.6742429733276367,encryption:155.19717121124268,decryption:4097.585939407349,plain:1000,cipher:3492
+cp data length=1000 attributes=10 type=or
+keygen:1.3382749557495117,encryption:78.33415508270264,decryption:2191.021004676819,plain:1000,cipher:3480
+cp data length=1000 attributes=20 type=and
+keygen:2.535827159881592,encryption:280.7205328941345,decryption:6955.556984901428,plain:1000,cipher:5344
+cp data length=1000 attributes=20 type=or
+keygen:2.832411766052246,encryption:138.23438596725464,decryption:3088.313504219055,plain:1000,cipher:5320
+cp data length=1000 attributes=30 type=and
+keygen:3.24696683883667,encryption:416.65097999572754,decryption:9964.032847881317,plain:1000,cipher:7200
+cp data length=1000 attributes=30 type=or
+keygen:3.217045783996582,encryption:199.23239183425903,decryption:3985.9768147468567,plain:1000,cipher:7160
+cp data length=1000 attributes=40 type=and
+keygen:4.146780967712402,encryption:552.6008548736572,decryption:13056.00046634674,plain:1000,cipher:9052
+cp data length=1000 attributes=40 type=or
+keygen:4.476981163024902,encryption:267.018168926239,decryption:4985.6551060676575,plain:1000,cipher:9000
+cp data length=1000 attributes=50 type=and

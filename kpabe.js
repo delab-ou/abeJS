@@ -41,9 +41,11 @@ function runABE(abe,encattr,keyattr,data){
       let dtext=abe.decrypt('key0',cctext);
     }
   dectime=performance.now()-dectime;
-    console.log('keygen:'+keygentime+','+
-        'encryption:'+enctime+','+
-        'decryption:'+dectime);
+  console.log('keygen:'+keygentime+','+
+      'encryption:'+enctime+','+
+      'decryption:'+dectime+","+
+      'plain:'+data.length+","+
+      'cipher:'+cctext.length);
 }
 
 function runKPABE(){
