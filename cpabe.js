@@ -37,7 +37,7 @@ function runABE(abe,encattr,keyattr,data){
   enctime=performance.now()-enctime;
 
   let dectime=performance.now();
-    for(let k=0;k<1000;k++){
+    for(let k=0;k<100;k++){
       let dtext=abe.decrypt('key0',cctext);
     }
   dectime=performance.now()-dectime;
