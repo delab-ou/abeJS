@@ -1,6 +1,7 @@
 /node_modules/
 /external/
 /build/
+/results/
 package-lock.json
 cpresult.txt
 kpresult.txt

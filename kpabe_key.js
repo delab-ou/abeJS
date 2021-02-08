@@ -30,6 +30,7 @@ function runABE(abe,encattr,keyattr,data){
     abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
   }
   keygentime=performance.now()-keygentime;
+/*
   let cctex='';
   let enctime=performance.now();
   for(let k=0;k<100;k++){
@@ -47,6 +48,9 @@ function runABE(abe,encattr,keyattr,data){
       'decryption:'+dectime+","+
       'plain:'+data.length+","+
       'cipher:'+cctext.length);
+
+    */
+    console.log('keygen:'+keygentime);
 }
 
 function runKPABE(){
@@ -58,10 +62,17 @@ function runKPABE(){
       encattr=genAttr(j,"|");
       keyattrOr=genAttr(j,"or");
       keyattrAnd=genAttr(j,"and")
-      console.log("kp "+"data length="+data.length+" attributes="+j+" type=and");
-      runABE(abe,encattr,keyattrAnd,data);
-      console.log("kp "+"data length="+data.length+" attributes="+j+" type=or");
-      runABE(abe,encattr,keyattrOr,data);
+      let keyand=performance.now();
+      for(let i=0;i<100;i++){
+        abe.keygen(keyattrAnd, "key0");//"attr1 | attr2 | attr3 | attr4"
+      }
+      keyand=performance.now()-keyand;
+      let keyor=performance.now();
+      for(let i=0;i<100;i++){
+        abe.keygen(keyattrOr, "key0");//"attr1 | attr2 | attr3 | attr4"
+      }
+      keyattrOr=performance.now()-keyor;
+      console.log("kp,"+data.length+","+j+","+keyand+","+keyor);
     }
     initialdata=data;
   }

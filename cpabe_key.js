@@ -26,11 +26,10 @@ function genAttr(num,andor){
 
 function runABE(abe,encattr,keyattr,data){
   let keygentime=performance.now();
-  for(let i=0;i<100;i++){
-    abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
-  }
+  abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
   keygentime=performance.now()-keygentime;
-  let cctex='';
+
+  let cctext='';
   let enctime=performance.now();
   for(let k=0;k<100;k++){
     cctext=abe.encrypt(encattr,data);
@@ -42,29 +41,32 @@ function runABE(abe,encattr,keyattr,data){
       let dtext=abe.decrypt('key0',cctext);
     }
   dectime=performance.now()-dectime;
-  console.log('keygen:'+keygentime+','+
-      'encryption:'+enctime+','+
-      'decryption:'+dectime+","+
-      'plain:'+data.length+","+
-      'cipher:'+cctext.length);
+    console.log('keygen:'+keygentime+','+
+        'encryption:'+enctime+','+
+        'decryption:'+dectime+","+
+        'plain:'+data.length+","+
+        'cipher:'+cctext.length);
 }
 
-function runKPABE(){
-  const abe=new napi.JsOABE('KP-ABE',keys["KP-ABE"]["mpk"],keys["KP-ABE"]["msk"]);
+function runCPABE(){
+  const abe=new napi.JsOABE('CP-ABE',keys["CP-ABE"]["mpk"],keys["CP-ABE"]["msk"]);
   let initialdata=genStr(10,'helloworld');//1k length
   for(let i=0;i<4;i++){
     let data=genStr(10,initialdata);
     for(let j=10;j<=100;j=j+10){
-      encattr=genAttr(j,"|");
-      keyattrOr=genAttr(j,"or");
-      keyattrAnd=genAttr(j,"and")
-      console.log("kp "+"data length="+data.length+" attributes="+j+" type=and");
-      runABE(abe,encattr,keyattrAnd,data);
-      console.log("kp "+"data length="+data.length+" attributes="+j+" type=or");
-      runABE(abe,encattr,keyattrOr,data);
+      encattrAnd=genAttr(j,"and");
+      encattrOr=genAttr(j,"or");
+      keyattr=genAttr(j,"|")
+
+      let keytime=performance.now();
+      for(let i=0;i<100;i++){
+        abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
+      }
+      keytime=performance.now()-keytime;
+      console.log("kp,"+data.length+","+j+","+keytime);
     }
     initialdata=data;
   }
 }
 
-runKPABE();
+runCPABE();
