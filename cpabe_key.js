@@ -50,9 +50,7 @@ function runABE(abe,encattr,keyattr,data){
 
 function runCPABE(){
   const abe=new napi.JsOABE('CP-ABE',keys["CP-ABE"]["mpk"],keys["CP-ABE"]["msk"]);
-  let initialdata=genStr(10,'helloworld');//1k length
-  for(let i=0;i<4;i++){
-    let data=genStr(10,initialdata);
+  console.log("type,attrs,time");
     for(let j=10;j<=100;j=j+10){
       encattrAnd=genAttr(j,"and");
       encattrOr=genAttr(j,"or");
@@ -63,10 +61,8 @@ function runCPABE(){
         abe.keygen(keyattr, "key0");//"attr1 | attr2 | attr3 | attr4"
       }
       keytime=performance.now()-keytime;
-      console.log("kp,"+data.length+","+j+","+keytime);
+      console.log("cp,"+j+","+keytime);
     }
-    initialdata=data;
-  }
 }
 
 runCPABE();
