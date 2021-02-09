@@ -71,7 +71,7 @@ function runKPABE(){
       for(let i=0;i<100;i++){
         abe.keygen(keyattrOr, "key0");//"attr1 | attr2 | attr3 | attr4"
       }
-      keyattrOr=performance.now()-keyor;
+      keyor=performance.now()-keyor;
       console.log("kp,"+data.length+","+j+","+keyand+","+keyor);
     }
     initialdata=data;
